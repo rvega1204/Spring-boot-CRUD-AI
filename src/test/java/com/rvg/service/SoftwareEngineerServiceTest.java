@@ -1,6 +1,7 @@
 package com.rvg.service;
 
 import com.rvg.SoftwareEngineer;
+import com.rvg.ai.AiService;
 import com.rvg.errors.NotFoundException;
 import com.rvg.repository.SoftwareEngineerRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,6 +28,9 @@ class SoftwareEngineerServiceTest {
     @Mock
     private SoftwareEngineerRepository softwareEngineerRepository;
 
+    @Mock
+    private AiService aiService;
+
     @InjectMocks
     private SoftwareEngineerService softwareEngineerService;
 
@@ -37,7 +41,8 @@ class SoftwareEngineerServiceTest {
         testEngineer = new SoftwareEngineer(
                 1,
                 "John Doe",
-                Arrays.asList("Java", "Spring Boot", "PostgreSQL")
+                Arrays.asList("Java", "Spring Boot", "PostgreSQL"),
+                null
         );
     }
 
@@ -47,7 +52,8 @@ class SoftwareEngineerServiceTest {
         SoftwareEngineer engineer2 = new SoftwareEngineer(
                 2,
                 "Jane Smith",
-                Arrays.asList("Python", "Django", "MongoDB")
+                Arrays.asList("Python", "Django", "MongoDB"),
+                null
         );
         List<SoftwareEngineer> expectedEngineers = Arrays.asList(testEngineer, engineer2);
         when(softwareEngineerRepository.findAll()).thenReturn(expectedEngineers);
@@ -112,12 +118,14 @@ class SoftwareEngineerServiceTest {
         SoftwareEngineer newEngineer = new SoftwareEngineer(
                 null,
                 "Alice Johnson",
-                Arrays.asList("JavaScript", "React", "Node.js")
+                Arrays.asList("JavaScript", "React", "Node.js"),
+                "AI-generated learning path"
         );
         SoftwareEngineer savedEngineer = new SoftwareEngineer(
                 3,
                 "Alice Johnson",
-                Arrays.asList("JavaScript", "React", "Node.js")
+                Arrays.asList("JavaScript", "React", "Node.js"),
+                "AI-generated learning path"
         );
         when(softwareEngineerRepository.save(newEngineer)).thenReturn(savedEngineer);
 
@@ -139,7 +147,8 @@ class SoftwareEngineerServiceTest {
         SoftwareEngineer updatedEngineer = new SoftwareEngineer(
                 1,
                 "John Doe Updated",
-                Arrays.asList("Java", "Spring Boot", "PostgreSQL", "Docker")
+                Arrays.asList("Java", "Spring Boot", "PostgreSQL", "Docker"),
+                null
         );
         when(softwareEngineerRepository.existsById(1)).thenReturn(true);
         when(softwareEngineerRepository.save(updatedEngineer)).thenReturn(updatedEngineer);
@@ -162,7 +171,8 @@ class SoftwareEngineerServiceTest {
         SoftwareEngineer nonExistentEngineer = new SoftwareEngineer(
                 999,
                 "Non Existent",
-                Arrays.asList("Tech")
+                Arrays.asList("Tech"),
+                null
         );
         when(softwareEngineerRepository.existsById(999)).thenReturn(false);
 

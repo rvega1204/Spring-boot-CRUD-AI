@@ -22,7 +22,8 @@ public class SoftwareEngineerMapper {
         return new SoftwareEngineer(
                 dto.id(),
                 dto.name(),
-                dto.techStack()
+                dto.techStack(),
+                dto.learningPathRecommendations()
         );
     }
 

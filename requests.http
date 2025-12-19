@@ -5,7 +5,7 @@ GET http://localhost:8080/api/v1/software-engineers
 GET localhost:8080/db-check
 
 ### GET request to fetch a software engineer by ID
-GET http://localhost:8080/api/v1/software-engineers/1
+GET http://localhost:8080/api/v1/software-engineers/6
 
 ### DELETE request to remove a software engineer by ID
 DELETE http://localhost:8080/api/v1/software-engineers/1

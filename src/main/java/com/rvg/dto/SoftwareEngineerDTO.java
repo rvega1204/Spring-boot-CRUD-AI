@@ -11,14 +11,16 @@ import java.util.List;
 public record SoftwareEngineerDTO(
         Integer id,
         String name,
-        List<String> techStack
+        List<String> techStack,
+        String learningPathRecommendations
 ) {
 
     public SoftwareEngineerDTO(SoftwareEngineer engineer) {
         this(
                 engineer.getId(),
                 engineer.getName(),
-                engineer.getTechStack()
+                engineer.getTechStack(),
+                engineer.getLearningPathRecommendations()
         );
     }
 }

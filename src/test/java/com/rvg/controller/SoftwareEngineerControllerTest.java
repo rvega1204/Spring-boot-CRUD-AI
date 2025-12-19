@@ -48,12 +48,14 @@ class SoftwareEngineerControllerTest {
         testEngineer = new SoftwareEngineer(
                 1,
                 "John Doe",
-                Arrays.asList("Java", "Spring Boot", "PostgreSQL")
+                Arrays.asList("Java", "Spring Boot", "PostgreSQL"),
+                null
         );
         testEngineerDTO = new SoftwareEngineerDTO(
                 1,
                 "John Doe",
-                Arrays.asList("Java", "Spring Boot", "PostgreSQL")
+                Arrays.asList("Java", "Spring Boot", "PostgreSQL"),
+                null
         );
     }
 
@@ -63,7 +65,8 @@ class SoftwareEngineerControllerTest {
         SoftwareEngineer engineer2 = new SoftwareEngineer(
                 2,
                 "Jane Smith",
-                Arrays.asList("Python", "Django", "MongoDB")
+                Arrays.asList("Python", "Django", "MongoDB"),
+                null
         );
         List<SoftwareEngineer> engineers = Arrays.asList(testEngineer, engineer2);
         when(softwareEngineerService.getAllSoftwareEngineers()).thenReturn(engineers);
@@ -135,12 +138,14 @@ class SoftwareEngineerControllerTest {
         SoftwareEngineerDTO newEngineerDTO = new SoftwareEngineerDTO(
                 null,
                 "Alice Johnson",
-                Arrays.asList("JavaScript", "React", "Node.js")
+                Arrays.asList("JavaScript", "React", "Node.js"),
+                null
         );
         SoftwareEngineer savedEngineer = new SoftwareEngineer(
                 3,
                 "Alice Johnson",
-                Arrays.asList("JavaScript", "React", "Node.js")
+                Arrays.asList("JavaScript", "React", "Node.js"),
+                null
         );
         when(softwareEngineerService.save(any(SoftwareEngineer.class))).thenReturn(savedEngineer);
 
@@ -163,12 +168,14 @@ class SoftwareEngineerControllerTest {
         SoftwareEngineerDTO updatedDTO = new SoftwareEngineerDTO(
                 1,
                 "John Doe Updated",
-                Arrays.asList("Java", "Spring Boot", "PostgreSQL", "Docker")
+                Arrays.asList("Java", "Spring Boot", "PostgreSQL", "Docker"),
+                null
         );
         SoftwareEngineer updatedEngineer = new SoftwareEngineer(
                 1,
                 "John Doe Updated",
-                Arrays.asList("Java", "Spring Boot", "PostgreSQL", "Docker")
+                Arrays.asList("Java", "Spring Boot", "PostgreSQL", "Docker"),
+                null
         );
         when(softwareEngineerService.update(any(SoftwareEngineer.class))).thenReturn(updatedEngineer);
 
@@ -190,7 +197,8 @@ class SoftwareEngineerControllerTest {
         SoftwareEngineerDTO updatedDTO = new SoftwareEngineerDTO(
                 999,
                 "Non Existent",
-                Arrays.asList("Tech")
+                Arrays.asList("Tech"),
+                null
         );
         when(softwareEngineerService.update(any(SoftwareEngineer.class)))
                 .thenThrow(new NotFoundException("Engineer not found with id: 999"));
@@ -237,12 +245,14 @@ class SoftwareEngineerControllerTest {
         SoftwareEngineerDTO newEngineerDTO = new SoftwareEngineerDTO(
                 null,
                 "Bob Wilson",
-                Arrays.asList()
+                Arrays.asList(),
+                null
         );
         SoftwareEngineer savedEngineer = new SoftwareEngineer(
                 4,
                 "Bob Wilson",
-                Arrays.asList()
+                Arrays.asList(),
+                null
         );
         when(softwareEngineerService.save(any(SoftwareEngineer.class))).thenReturn(savedEngineer);
 

@@ -1,9 +1,7 @@
 package com.rvg;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +17,22 @@ public class SoftwareEngineer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @ElementCollection
+    @CollectionTable(name = "software_engineer_tech_stack",
+            joinColumns = @JoinColumn(name = "software_engineer_id"))
+    @Column(name = "tech_stack")
     private List<String> techStack;
+    @Column(columnDefinition = "TEXT")
+    private String learningPathRecommendations;
 
     public SoftwareEngineer() {
     }
 
-    public SoftwareEngineer(Integer id, String name, List<String> techStack) {
+    public SoftwareEngineer(Integer id, String name, List<String> techStack, String learningPathRecommendations) {
         this.id = id;
         this.name = name;
         this.techStack = techStack;
+        this.learningPathRecommendations = learningPathRecommendations;
     }
 
     public Integer getId() {
@@ -50,6 +55,14 @@ public class SoftwareEngineer {
         return techStack;
     }
 
+    public String getLearningPathRecommendations() {
+        return learningPathRecommendations;
+    }
+
+    public void setLearningPathRecommendations(String learningPathRecommendations) {
+        this.learningPathRecommendations = learningPathRecommendations;
+    }
+
     public void setTechStack(List<String> techStack) {
         this.techStack = techStack != null ? new ArrayList<>(techStack) : new ArrayList<>();
     }
@@ -58,11 +71,11 @@ public class SoftwareEngineer {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         SoftwareEngineer that = (SoftwareEngineer) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(techStack, that.techStack);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(techStack, that.techStack) && Objects.equals(learningPathRecommendations, that.learningPathRecommendations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, techStack);
+        return Objects.hash(id, name, techStack, learningPathRecommendations);
     }
 }

@@ -1,0 +1,29 @@
+### GET request to fetch all software engineers
+GET http://localhost:8080/api/v1/software-engineers
+
+### GET request to check database connectivity
+GET localhost:8080/db-check
+
+### GET request to fetch a software engineer by ID
+GET http://localhost:8080/api/v1/software-engineers/1
+
+### DELETE request to remove a software engineer by ID
+DELETE http://localhost:8080/api/v1/software-engineers/1
+
+### POST request to add a new software engineer
+POST http://localhost:8080/api/v1/software-engineers
+Content-Type: application/json
+
+{
+  "name": "Alice Johnson",
+  "techStack": ["Python", "Django", "PostgreSQL", "Docker", "AWS"]
+}
+
+### PUT request to update an existing software engineer by ID
+PUT http://localhost:8080/api/v1/software-engineers/2
+Content-Type: application/json
+
+{
+  "name": "Bob Smith",
+  "techStack": ["Java", "Spring Boot", "MySQL", "Kubernetes", "GCP"]
+}
